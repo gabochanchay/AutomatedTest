@@ -43,28 +43,31 @@ public class EditarPrecio {
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='SAVIASOFT'])[1]/preceding::i[2]")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Venta'])[2]/preceding::a[2]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Efectivo'])[1]/following::i[4]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Plan 10 facturas'])[1]/following::i[4]")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[2]")).click();
-        driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).click();
-        driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).clear();
-        driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).sendKeys("121");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[4]")).click();
-
 
     }
 
     @Then("^Selecciono el conveio que voy a editar$")
     public void seleccionoElConveioQueVoyAEditar() {
+        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Efectivo'])[1]/following::i[4]")).click();
 
     }
 
     @Then("^Selecciono el plan de precios qeu voy a editar$")
     public void seleccionoElPlanDePreciosQeuVoyAEditar() {
 
+        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Plan 10 facturas'])[1]/following::i[4]")).click();
+
+
     }
 
     @Then("^Selecciono y edito el precio que deseo\\.$")
     public void seleccionoYEditoElPrecioQueDeseo() {
+
+        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[2]")).click();
+        driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).click();
+        driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).clear();
+        driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).sendKeys("121");
+        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[4]")).click();
+        
     }
 }
