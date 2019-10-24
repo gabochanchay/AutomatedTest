@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,18 +16,18 @@ public class EditarPrecio {
     private static WebDriver driver;
 
 //    private final String URL = "http://35.246.35.236";
-    private final String URL = "http://localhost:8080/FacturaWeb";
+    private final String URL = "186.4.252.247:8888/FacturaWeb/pages/index.jsf";
 
     @Before
     public void setUp()  {
-//        Logger.getLogger("").setLevel(Level.OFF);
-//        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");
-//        driver = new ChromeDriver(options);
-        System.setProperty("webdriver.chrome.driver",
-                "drivers//chromedriver");
-        driver = new ChromeDriver();
+        Logger.getLogger("").setLevel(Level.OFF);
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+//        System.setProperty("webdriver.chrome.driver",
+//                "drivers//chromedriver-2");
+//        driver = new ChromeDriver();
 
     }
 
@@ -34,14 +35,15 @@ public class EditarPrecio {
     @Then("^Selecciono el menu de convenios$")
     public void seleccionoElMenuDeConvenios() {
         driver.get(URL);
-
-
-        driver.findElement(By.id("j_username")).click();
-        driver.findElement(By.id("contenido")).click();
+//        driver.get("http://localhost:8080/FacturaWeb/pages/index.jsf");
+        driver.findElement(By.id("j_username")).clear();
+        driver.findElement(By.id("j_username")).sendKeys("marcia.almagro@saviasoft.com");
+        driver.findElement(By.id("j_password")).clear();
+        driver.findElement(By.id("j_password")).sendKeys("12345678");
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='¿Olvidaste tu contraseña?'])[1]/preceding::button[1]")).click();
-        driver.get("http://localhost:8080/FacturaWeb/pages/index.jsf");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='SAVIASOFT'])[1]/preceding::button[1]")).click();
-        driver.findElement(By.linkText("Administración de Convenios")).click();
+        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='SAVIASOFT'])[1]/preceding::i[2]")).click();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Venta'])[2]/preceding::a[2]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Efectivo'])[1]/following::i[4]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Plan 10 facturas'])[1]/following::i[4]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[2]")).click();
