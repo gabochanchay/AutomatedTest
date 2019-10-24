@@ -19,6 +19,7 @@ public class EditarPrecio {
     private final String URL = "http://186.4.252.247:8888/FacturaWeb/pages/index.jsf";
 //    private final String URL = "http://localhost:8080/FacturaWeb/pages/index.jsf";
 
+    
     @Before
     public void setUp()  {
         Logger.getLogger("").setLevel(Level.OFF);
