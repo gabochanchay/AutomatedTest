@@ -15,8 +15,8 @@ public class EditarPrecio {
 
     private static WebDriver driver;
 
-//    private final String URL = "http://35.246.35.236";
-    private final String URL = "186.4.252.247:8888/FacturaWeb/pages/index.jsf";
+    private final String URL = "http://186.4.252.247:8888/FacturaWeb/pages/index.jsf";
+//    private final String URL = "http://localhost:8080/FacturaWeb/pages/index.jsf";
 
     @Before
     public void setUp()  {
@@ -24,7 +24,9 @@ public class EditarPrecio {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-//        System.setProperty("webdriver.chrome.driver",
+
+
+//                System.setProperty("webdriver.chrome.driver",
 //                "drivers//chromedriver-2");
 //        driver = new ChromeDriver();
 
@@ -68,6 +70,6 @@ public class EditarPrecio {
         driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).clear();
         driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).sendKeys("121");
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[4]")).click();
-        
+
     }
 }
