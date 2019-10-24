@@ -1,5 +1,6 @@
 package cucumber;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
@@ -30,6 +31,11 @@ public class EditarPrecio {
 //                "drivers//chromedriver-2");
 //        driver = new ChromeDriver();
 
+    }
+
+    @After
+    public void tearDown() {
+        driver.close();
     }
 
 
