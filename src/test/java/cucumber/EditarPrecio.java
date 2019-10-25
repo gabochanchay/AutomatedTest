@@ -3,6 +3,7 @@ package cucumber;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,7 +20,7 @@ public class EditarPrecio {
     private final String URL = "http://186.4.252.247:8888/FacturaWeb/pages/index.jsf";
 //    private final String URL = "http://localhost:8080/FacturaWeb/pages/index.jsf";
 
-    
+
     @Before
     public void setUp()  {
         Logger.getLogger("").setLevel(Level.OFF);
@@ -75,8 +76,12 @@ public class EditarPrecio {
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[2]")).click();
         driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).click();
         driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).clear();
-        driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).sendKeys("121");
+        Integer valor = (int) (Math.random() * 50 + 1);
+        driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).sendKeys(valor.toString());
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[4]")).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        System.out.println("valor: ************* "+ driver.findElement(By.xpath("//tr[5]/td[3]")).getText());
+        Assert.assertEquals(valor.toString()+".00", driver.findElement(By.xpath("//tr[5]/td[3]")).getText());
 
     }
 }
