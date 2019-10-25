@@ -17,21 +17,21 @@ public class EditarPrecio {
 
     private static WebDriver driver;
 
-    private final String URL = "http://186.4.252.247:8888/FacturaWeb/pages/index.jsf";
-//    private final String URL = "http://localhost:8080/FacturaWeb/pages/index.jsf";
+//    private final String URL = "http://186.4.252.247:8888/FacturaWeb/pages/index.jsf";
+    private final String URL = "http://localhost:8080/FacturaWeb/pages/index.jsf";
 
 
     @Before
     public void setUp()  {
-        Logger.getLogger("").setLevel(Level.OFF);
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
+//        Logger.getLogger("").setLevel(Level.OFF);
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--headless");
+//        driver = new ChromeDriver(options);
 
 
-//                System.setProperty("webdriver.chrome.driver",
-//                "drivers//chromedriver-2");
-//        driver = new ChromeDriver();
+                System.setProperty("webdriver.chrome.driver",
+                "drivers//chromedriver-2");
+        driver = new ChromeDriver();
 
     }
 
@@ -51,7 +51,7 @@ public class EditarPrecio {
         driver.findElement(By.id("j_password")).sendKeys("12345678");
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='¿Olvidaste tu contraseña?'])[1]/preceding::button[1]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='SAVIASOFT'])[1]/preceding::i[2]")).click();
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.linkText("Administración de Convenios")).click();
 
     }
@@ -80,8 +80,8 @@ public class EditarPrecio {
         driver.findElement(By.name("j_idt98:j_idt113:4:j_idt123")).sendKeys(valor.toString());
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='CAJA GENERAL'])[2]/following::i[4]")).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        System.out.println("valor: ************* "+ driver.findElement(By.xpath("//tr[5]/td[3]")).getText());
-        Assert.assertEquals(valor.toString()+".00", driver.findElement(By.xpath("//tr[5]/td[3]")).getText());
+        System.out.println("valor: ************* "+ driver.findElement(By.xpath("//*[@id=\"j_idt98:j_idt113:4:valor\"]")).getText());
+        Assert.assertEquals(valor.toString(), driver.findElement(By.xpath("//*[@id=\"j_idt98:j_idt113:4:valor\"]")).getText());
 
     }
 }
