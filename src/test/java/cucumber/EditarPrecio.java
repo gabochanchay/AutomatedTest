@@ -51,7 +51,7 @@ public class EditarPrecio {
         driver.findElement(By.id("j_password")).sendKeys("12345678");
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='¿Olvidaste tu contraseña?'])[1]/preceding::button[1]")).click();
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='SAVIASOFT'])[1]/preceding::i[2]")).click();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         driver.findElement(By.linkText("Administración de Convenios")).click();
 
     }
